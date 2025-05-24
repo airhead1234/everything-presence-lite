@@ -32,3 +32,18 @@ button:
         - scd4x.perform_forced_calibration:
             value: 419
             id: scd40
+
+number:
+  - platform: template
+    id: co2_altitude
+    name: CO2 Altitude
+    icon: mdi:arrow-left-right
+    entity_category: config
+    min_value: 0
+    max_value: 3000
+    initial_value: 0
+    optimistic: true
+    step: 1
+    restore_value: true
+    unit_of_measurement: m
+    mode: slider
