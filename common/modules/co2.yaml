@@ -47,6 +47,11 @@ number:
     restore_value: true
     unit_of_measurement: m
     mode: slider
+    set_action:
+      - scd4x.stop_periodic_measurement:
+          id: scd40
+      - scd4x.start_low_power_periodic_measurement:
+          id: scd40
   - platform: template
     id: co2_calibration_target
     name: CO2 Calibration Target
