@@ -47,3 +47,16 @@ number:
     restore_value: true
     unit_of_measurement: m
     mode: slider
+  - platform: template
+    id: co2_calibration_target
+    name: CO2 Calibration Target
+    icon: mdi:arrow-left-right
+    entity_category: config
+    min_value: 400
+    max_value: 2000
+    initial_value: 400
+    optimistic: true
+    step: 1
+    restore_value: true
+    unit_of_measurement: ppm
+    mode: slider
