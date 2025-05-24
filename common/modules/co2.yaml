@@ -1,12 +1,18 @@
 api:
-  services:
-    - service: calibrate_co2_value
+  actions:
+    - action: calibrate_co2_value
       variables:
         co2_ppm: int
       then:
         - scd4x.perform_forced_calibration:
             value: !lambda "return co2_ppm;"
             id: scd40
+    - action: set_altitude
+      variables:
+        altitude_m: int
+      then:
+        - lambda: "id(scd40)->stop_periodic_measurement;"    
+        - lambda: "id(scd40)->start_low_power_periodic_measurement;"    
 
 i2c:
   - id: bus_b
@@ -47,11 +53,6 @@ number:
     restore_value: true
     unit_of_measurement: m
     mode: slider
-    set_action:
-      - scd4x.stop_periodic_measurement:
-          id: scd40
-      - scd4x.start_low_power_periodic_measurement:
-          id: scd40
   - platform: template
     id: co2_calibration_target
     name: CO2 Calibration Target
