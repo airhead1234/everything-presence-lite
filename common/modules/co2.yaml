@@ -28,7 +28,9 @@ sensor:
       name: "CO2"
       id: "co2"
       filters:
-        - delta: 5%
+        - or:
+          - delta: 5%
+          - delta: 5
     automatic_self_calibration: false
 
 button:
