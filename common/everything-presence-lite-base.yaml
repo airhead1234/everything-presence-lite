@@ -73,7 +73,9 @@ sensor:
     accuracy_decimals: 0
     filters:
       - lambda: "return x + id(illuminance_offset_ui).state;"
-      - delta: 5%
+      - or:
+        - delta: 5%
+        - delta: 5
       - clamp:
           min_value: 0
 
